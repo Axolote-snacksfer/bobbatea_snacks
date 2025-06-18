@@ -39,40 +39,8 @@
     }
 
     section {
-     .carrusel {
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  max-width: 600px;
-  margin: 2rem auto;
-}
+          padding: 2rem;
 
-.slides {
-  display: flex;
-  width: 400%;
-  animation: deslizar 20s infinite;
-}
-
-.slides img {
-  width: 100%;
-  object-fit: cover;
-}
-
-@keyframes deslizar {
-  0%   { transform: translateX(0%); }
-  25%  { transform: translateX(-100%); }
-  50%  { transform: translateX(-200%); }
-  75%  { transform: translateX(-300%); }
-  100% { transform: translateX(0%); }
-}
-    }
-
-    .menu, .contacto {
-      background-color: #fff;
-      border-radius: 20px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
     }
 
     footer {
@@ -104,6 +72,34 @@
       border-radius: 15px;
       margin-top: 1rem;
     }
+
+.carrusel {
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.slides {
+  display: flex;
+  width: 400%;
+  animation: deslizar 20s infinite;
+}
+
+.slides img {
+  width: 100%;
+  object-fit: cover;
+}
+
+@keyframes deslizar {
+  0%   { transform: translateX(0%); }
+  25%  { transform: translateX(-100%); }
+  50%  { transform: translateX(-200%); }
+  75%  { transform: translateX(-300%); }
+  100% { transform: translateX(0%); }
+}
+    
   </style>
 </head>
 <body>
