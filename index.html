@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Axolo-té & Snacks Fer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Quicksand', sans-serif;
@@ -39,15 +39,15 @@
     }
 
     section {
-          padding: 2rem;
-
+      padding: 2rem;
     }
 
-    footer {
-      text-align: center;
-      background-color: #d6fff6;
-      padding: 1rem;
-      font-size: 0.9rem;
+    .menu, .contacto {
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
     }
 
     .boton {
@@ -67,42 +67,126 @@
       background: #ec407a;
     }
 
-    iframe {
-      border: none;
-      border-radius: 15px;
+    .slider {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .slides {
+      display: flex;
+      width: 400%;
+      transition: transform 0.6s ease;
+    }
+
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    #slide1:checked ~ .slides { transform: translateX(0%); }
+    #slide2:checked ~ .slides { transform: translateX(-100%); }
+    #slide3:checked ~ .slides { transform: translateX(-200%); }
+    #slide4:checked ~ .slides { transform: translateX(-300%); }
+
+    .navigation {
+      text-align: center;
       margin-top: 1rem;
     }
 
-.carrusel {
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  max-width: 600px;
-  margin: 2rem auto;
-}
+    .bar {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background: #d5b7ff;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-.slides {
-  display: flex;
-  width: 400%;
-  animation: deslizar 20s infinite;
-}
+    .bar:hover {
+      background: #f48fb1;
+    }
 
-.slides img {
-  width: 100%;
-  object-fit: cover;
-}
+    .arrows {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 1rem;
+    }
 
-@keyframes deslizar {
-  0%   { transform: translateX(0%); }
-  25%  { transform: translateX(-100%); }
-  50%  { transform: translateX(-200%); }
-  75%  { transform: translateX(-300%); }
-  100% { transform: translateX(0%); }
-}
-    
+    .arrows label {
+      font-size: 2rem;
+      color: #fff;
+      background: rgba(0,0,0,0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .arrows label:hover {
+      background: rgba(0,0,0,0.6);
+    }
+
+    footer {
+      text-align: center;
+      background-color: #d6fff6;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Confeti */
+    @keyframes confeti {
+      0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .confeti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      background: pink;
+      border-radius: 50%;
+      animation: confeti 5s linear infinite;
+      z-index: 9999;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Música de fondo -->
+  <audio autoplay loop>
+    <source src="musica-snacksfer.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <!-- Confeti mágico -->
+  <div class="confeti" style="left:10%; animation-delay: 0s;"></div>
+  <div class="confeti" style="left:30%; animation-delay: 1s;"></div>
+  <div class="confeti" style="left:50%; animation-delay: 2s;"></div>
+  <div class="confeti" style="left:70%; animation-delay: 3s;"></div>
+  <div class="confeti" style="left:90%; animation-delay: 4s;"></div>
 
   <header>
     <h1>Axolo-té & Snacks Fer</h1>
@@ -117,34 +201,43 @@
 
   <section id="menu" class="menu">
     <h2>🍿 Menú</h2>
-    <p>Elige entre nuestros Bobba Teas, Snacks , y Caprichos Dulces hechos con amor 💖</p>
+    <p>Elige entre nuestros Bobba Teas, Snacks y Caprichos Dulces hechos con amor 💖</p>
     <a href="Menu-axolote.pdf" class="boton" download>📄 Descargar Menú</a>
-    <iframe src="Menu-axolote.pdf" width="100%" height="600px"></iframe>
+    <iframe src="Menu-axolote.pdf" width="100%" height="600px" style="border:none; border-radius:15px;"></iframe>
   </section>
 
- <section id="galeria" class="menu">
-  <h2>📸 Galería</h2>
-  <p>¡Nuestros productos más encantadores en rotación suave!</p>
-  <div class="carrusel">
-    <div class="slides">
-      <img src="fresasconcrema.jpg" alt="Fresas con crema">
-      <img src="boba-colorido.jpg" alt="Boba colorido">
-      <img src="pastelitos.jpg" alt="Pastelitos">
-      <img src="snack-chamoy.jpg" alt="Snack con chamoy">
+  <section id="galeria" class="menu">
+    <h2>📸 Galería</h2>
+    <p>¡Nuestros productos más encantadores en rotación suave!</p>
+    <div class="slider">
+      <input type="radio" name="slider" id="slide1" checked>
+      <input type="radio" name="slider" id="slide2">
+      <input type="radio" name="slider" id="slide3">
+      <input type="radio" name="slider" id="slide4">
+
+      <div class="slides">
+        <div class="slide s1"><img src="fresasconcrema.jpg" alt="Fresas con crema"></div>
+        <div class="slide"><img src="boba-colorido.jpg" alt="Boba colorido"></div>
+        <div class="slide"><img src="pastelitos.jpg" alt="Pastelitos"></div>
+        <div class="slide"><img src="snack-chamoy.jpg" alt="Snack con chamoy"></div>
+      </div>
+
+      <div class="navigation">
+        <label for="slide1" class="bar"></label>
+        <label for="slide2" class="bar"></label>
+        <label for="slide3" class="bar"></label>
+        <label for="slide4" class="bar"></label>
+      </div>
+
+      <div class="arrows">
+        <label for="slide4">&#10094;</label>
+        <label for="slide2">&#10095;</label>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section id="contacto" class="contacto">
     <h2>📍 Contáctanos</h2>
     <p>Visítanos en Tizimín, Yucatán o haz tu pedido con un mensajito 📱</p>
     <p><strong>WhatsApp:</strong> <a href="https://wa.me/5219861073722" target="_blank" class="boton">💬 Enviar mensaje</a></p>
-    <p><strong>Facebook:</strong> axolo-té <a href="https://www.facebook.com/profile.php?id=61577152563658&mibextid=ZbWKwL" target="_blank" class="boton">🩵​ Página de Facebook </a></p>
-  </section>
-
-  <footer>
-    <p>Hecho con 💕 por • Axolo-té & Snacks Fer 🧋</p>
-  </footer>
-
-</body>
-</html>
+    <p><strong>Facebook:</strong> axolo-té <a href="https://www.facebook.com/profile.php?id=61577152563658&mibextid=ZbWKwL" target="_blank" class="boton">
