@@ -6,6 +6,10 @@
   <title>Axolo-té & Snacks Fer</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Quicksand', sans-serif;
       margin: 0;
@@ -13,15 +17,21 @@
       color: #5c3b5c;
     }
 
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
     header {
       background-color: #f9c6d1;
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
       border-bottom: 5px dotted #d5b7ff;
     }
 
     header h1 {
-      font-size: 2.8rem;
+      font-size: clamp(2rem, 6vw, 2.8rem);
       margin: 0;
     }
 
@@ -36,10 +46,11 @@
       text-decoration: none;
       margin: 0 1rem;
       font-weight: bold;
+      display: inline-block;
     }
 
     section {
-      padding: 2rem;
+      padding: 2rem 1rem;
     }
 
     .menu, .contacto {
@@ -65,6 +76,13 @@
 
     .boton:hover {
       background: #ec407a;
+    }
+
+    iframe {
+      width: 100%;
+      max-height: 600px;
+      border: none;
+      border-radius: 15px;
     }
 
     .slider {
@@ -154,7 +172,6 @@
       font-size: 0.9rem;
     }
 
-    /* Confeti */
     @keyframes confeti {
       0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
@@ -171,73 +188,88 @@
       z-index: 9999;
       pointer-events: none;
     }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      .arrows label {
+        font-size: 1.5rem;
+      }
+
+      header {
+        padding: 1rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      iframe {
+        max-height: 400px;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Música de fondo -->
   <audio autoplay loop>
     <source src="musicafondo.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
 
-  <!-- Confeti mágico -->
   <div class="confeti" style="left:10%; animation-delay: 0s;"></div>
   <div class="confeti" style="left:30%; animation-delay: 1s;"></div>
   <div class="confeti" style="left:50%; animation-delay: 2s;"></div>
   <div class="confeti" style="left:70%; animation-delay: 3s;"></div>
   <div class="confeti" style="left:90%; animation-delay: 4s;"></div>
 
-  <header>
-    <h1>Axolo-té & Snacks Fer</h1>
-    <p>Donde el antojo se vuelve tierno 💕🧋</p>
-  </header>
+  <div class="container">
+    <header>
+      <h1>Axolo-té & Snacks Fer</h1>
+      <p>Donde el antojo se vuelve tierno 💕🧋</p>
+    </header>
 
-  <nav>
-    <a href="#menu">Menú</a>
-    <a href="#galeria">Galería</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+    <nav>
+      <a href="#menu">Menú</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
 
-  <section id="menu" class="menu">
-    <h2>🍿 Menú</h2>
-    <p>Elige entre nuestros Bobba Teas, Snacks y Caprichos Dulces hechos con amor 💖</p>
-    <a href="Menu-axolote.pdf" class="boton" download>📄 Descargar Menú</a>
-    <iframe src="Menu-axolote.pdf" width="100%" height="600px" style="border:none; border-radius:15px;"></iframe>
-  </section>
+    <section id="menu" class="menu">
+      <h2>🍿 Menú</h2>
+      <p>Elige entre nuestros Bobba Teas, Snacks y Caprichos Dulces hechos con amor 💖</p>
+      <a href="Menu-axolote.pdf" class="boton" download>📄 Descargar Menú</a>
+      <iframe src="Menu-axolote.pdf"></iframe>
+    </section>
 
-  <section id="galeria" class="menu">
-    <h2>📸 Galería</h2>
-    <p>¡Nuestros productos más encantadores en rotación suave!</p>
-    <div class="slider">
-      <input type="radio" name="slider" id="slide1" checked>
-      <input type="radio" name="slider" id="slide2">
-      <input type="radio" name="slider" id="slide3">
-      <input type="radio" name="slider" id="slide4">
+    <section id="galeria" class="menu">
+      <h2>📸 Galería</h2>
+      <p>¡Nuestros productos más encantadores en rotación suave!</p>
+      <div class="slider">
+        <input type="radio" name="slider" id="slide1" checked>
+        <input type="radio" name="slider" id="slide2">
+        <input type="radio" name="slider" id="slide3">
+        <input type="radio" name="slider" id="slide4">
 
-      <div class="slides">
-        <div class="slide s1"><img src="fresasconcrema.jpg" alt="Fresas con crema"></div>
-        <div class="slide"><img src="chamoyadamango.png" alt="Chamoyada de Mango"></div>
-        <div class="slide"><img src="sopaflmin.png" alt="Nissin Preparada"></div>
-        <div class="slide"><img src="snack-chamoy.jpg" alt="Snack con chamoy"></div>
-      </div>
+        <div class="slides">
+          <div class="slide s1"><img src="fresasconcrema.jpg" alt="Fresas con crema"></div>
+          <div class="slide"><img src="chamoyadamango.png" alt="Chamoyada de Mango"></div>
+          <div class="slide"><img src="sopaflmin.png" alt="Nissin Preparada"></div>
+          <div class="slide"><img src="snack-chamoy.jpg" alt="Snack con chamoy"></div>
+        </div>
 
-      <div class="navigation">
-        <label for="slide1" class="bar"></label>
-        <label for="slide2" class="bar"></label>
-        <label for="slide3" class="bar"></label>
-        <label for="slide4" class="bar"></label>
-      </div>
+        <div class="navigation">
+          <label for="slide1" class="bar"></label>
+          <label for="slide2" class="bar"></label>
+          <label for="slide3" class="bar"></label>
+          <label for="slide4" class="bar"></label>
+        </div>
 
-      <div class="arrows">
-        <label for="slide4">&#10094;</label>
-        <label for="slide2">&#10095;</label>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto" class="contacto">
-    <h2>📍 Contáctanos</h2>
-    <p>Visítanos en Tizimín, Yucatán o haz tu pedido con un mensajito 📱</p>
-    <p><strong>WhatsApp:</strong> <a href="https://wa.me/5219861073722" target="_blank" class="boton">💬 Enviar mensaje</a></p>
-    <p><strong>Facebook:</strong> axolo-té <a href="https://www.facebook.com/profile.php?id=61577152563658&mibextid=ZbWKwL" target="_blank" class="boton">
+        <div class="arrows">
+          <label for="slide4">&#10094;</label>
+          <label for="slide2">&#10095;</label>
+        </div>
+      </
